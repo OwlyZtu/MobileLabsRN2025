@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MOCK_NEWS } from "@/data/mockData";
 import { NewsItem } from "@/types";
 import NewsCard from "@/components/news/NewsCard";
+import { darkTheme } from "@/constants/theme";
 
 const NewsScreen: React.FC = () => {
   const handleNewsPress = useCallback((item: NewsItem) => {
@@ -35,10 +36,10 @@ const NewsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: darkTheme.colors.background,
   },
   listContent: {
-    padding: 10,
+    padding: darkTheme.spacing.sm,
   },
 });
 

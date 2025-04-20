@@ -11,6 +11,7 @@ import Button from "@/components/Button";
 import { useAuth } from "@/context/AuthContext";
 import { MaterialTopTabScreenProps } from "@react-navigation/material-top-tabs";
 import { AuthStackParamList } from "@/navigation/AuthNavigator";
+import { darkTheme } from "@/constants/theme";
 
 type ProfileScreenProps = MaterialTopTabScreenProps<
   AuthStackParamList,
@@ -57,35 +58,36 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: darkTheme.colors.background,
   },
   profileContainer: {
-    padding: 20,
+    padding: darkTheme.spacing.md,
     alignItems: "center",
   },
   profileImage: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    marginBottom: 15,
+    marginBottom: darkTheme.spacing.md,
   },
   profileName: {
     fontSize: 24,
     fontWeight: "bold",
+    color: darkTheme.colors.text,
   },
   profileUsername: {
     fontSize: 16,
-    color: "#666",
-    marginBottom: 5,
+    color: darkTheme.colors.textSecondary,
+    marginBottom: darkTheme.spacing.xs,
   },
   profileEmail: {
     fontSize: 14,
-    color: "#888",
-    marginBottom: 30,
+    color: darkTheme.colors.textSecondary,
+    marginBottom: darkTheme.spacing.xl,
   },
   buttonContainer: {
     width: "100%",
-    paddingHorizontal: 20,
+    paddingHorizontal: darkTheme.spacing.md,
   },
   logoutButton: {
     width: "100%",

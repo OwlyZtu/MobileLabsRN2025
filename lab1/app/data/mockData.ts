@@ -8,7 +8,7 @@ export const MOCK_NEWS: NewsItem[] = [
       "Scientists have made a breakthrough in quantum computing that could revolutionize the industry.",
     date: "2025-04-19",
     author: "John Smith",
-    imageUrl: "https://via.placeholder.com/300",
+    imageUrl: "https://picsum.photos/seed/news1/800/400",
     category: "Technology",
   },
   {
@@ -18,7 +18,7 @@ export const MOCK_NEWS: NewsItem[] = [
       "React Native continues to dominate the cross-platform mobile development landscape in 2025.",
     date: "2025-04-18",
     author: "Jane Doe",
-    imageUrl: "https://via.placeholder.com/300",
+    imageUrl: "https://picsum.photos/seed/news2/800/400",
     category: "Development",
   },
   {
@@ -28,7 +28,7 @@ export const MOCK_NEWS: NewsItem[] = [
       "More household devices are now incorporating artificial intelligence to enhance user experience.",
     date: "2025-04-17",
     author: "Alex Johnson",
-    imageUrl: "https://via.placeholder.com/300",
+    imageUrl: "https://picsum.photos/seed/news3/800/400",
     category: "AI",
   },
 ];

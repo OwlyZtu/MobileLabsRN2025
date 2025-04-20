@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { PhotoItem } from "@/types";
+import { darkTheme } from "@/constants/theme";
 
 interface PhotoCardProps {
   item: PhotoItem;
@@ -18,7 +19,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ item, onPress }) => {
     <TouchableOpacity
       style={styles.container}
       onPress={handlePress}
-      activeOpacity={onPress ? 0.7 : 1}
+      activeOpacity={0.7}
     >
       <Image
         source={{ uri: item.url }}
@@ -40,32 +41,33 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ item, onPress }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 5,
-    backgroundColor: "#ffffff",
-    borderRadius: 8,
+    margin: darkTheme.spacing.xs,
+    backgroundColor: darkTheme.colors.surface,
+    borderRadius: darkTheme.borderRadius.md,
     overflow: "hidden",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   image: {
     width: "100%",
-    height: 150,
-    backgroundColor: "#f0f0f0",
+    height: 180,
+    backgroundColor: darkTheme.colors.border,
   },
   content: {
-    padding: 8,
+    padding: darkTheme.spacing.sm,
   },
   title: {
     fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 2,
+    fontWeight: "600",
+    color: darkTheme.colors.text,
+    marginBottom: darkTheme.spacing.xs,
   },
   description: {
     fontSize: 12,
-    color: "#666",
+    color: darkTheme.colors.textSecondary,
   },
 });
 

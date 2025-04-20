@@ -1,57 +1,47 @@
 import React, { memo } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  Text,
-  TextInputProps,
-} from "react-native";
+import { TextInput, StyleSheet, View, Text, TextInputProps } from "react-native";
+import { darkTheme } from "@/constants/theme";
 
 interface InputProps extends TextInputProps {
   onChangeText: (text: string) => void;
   error?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  value,
-  onChangeText,
-  error,
-  ...rest
-}) => {
+const Input: React.FC<InputProps> = ({ value, onChangeText, error, ...rest }) => {
   return (
     <View style={styles.container}>
       <TextInput
         style={[styles.input, error ? styles.inputError : null]}
         value={value}
         onChangeText={onChangeText}
+        placeholderTextColor={darkTheme.colors.textSecondary}
         {...rest}
       />
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    marginBottom: 15,
+    marginBottom: darkTheme.spacing.md,
   },
   input: {
-    backgroundColor: "#ffffff",
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    borderRadius: 8,
+    backgroundColor: darkTheme.colors.surface,
+    borderRadius: darkTheme.borderRadius.md,
+    padding: darkTheme.spacing.md,
+    color: darkTheme.colors.text,
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: darkTheme.colors.border,
   },
   inputError: {
-    borderColor: "#ff3b30",
+    borderColor: darkTheme.colors.error,
   },
   errorText: {
-    color: "#ff3b30",
+    color: darkTheme.colors.error,
     fontSize: 12,
-    marginTop: 5,
-    paddingHorizontal: 5,
+    marginTop: darkTheme.spacing.xs,
+    marginLeft: darkTheme.spacing.xs,
   },
 });
 

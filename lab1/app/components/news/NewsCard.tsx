@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { NewsItem } from "@/types";
+import { darkTheme } from "@/constants/theme";
 
 interface NewsCardProps {
   item: NewsItem;
@@ -41,42 +42,45 @@ const NewsCard: React.FC<NewsCardProps> = ({ item, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    marginBottom: 15,
+    backgroundColor: darkTheme.colors.surface,
+    borderRadius: darkTheme.borderRadius.md,
+    marginBottom: darkTheme.spacing.md,
     overflow: "hidden",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 2,
+    elevation: 5,
   },
   image: {
     width: "100%",
     height: 200,
+    backgroundColor: darkTheme.colors.border,
   },
   content: {
-    padding: 15,
+    padding: darkTheme.spacing.md,
   },
   category: {
     fontSize: 12,
-    color: "#007AFF",
+    color: darkTheme.colors.primary,
     fontWeight: "bold",
-    marginBottom: 4,
+    marginBottom: darkTheme.spacing.xs,
   },
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 5,
+    color: darkTheme.colors.text,
+    marginBottom: darkTheme.spacing.xs,
   },
   date: {
     fontSize: 12,
-    color: "#666",
-    marginBottom: 10,
+    color: darkTheme.colors.textSecondary,
+    marginBottom: darkTheme.spacing.sm,
   },
   text: {
     fontSize: 14,
     lineHeight: 20,
+    color: darkTheme.colors.text,
   },
 });
 

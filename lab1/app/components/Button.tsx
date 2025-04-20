@@ -1,18 +1,19 @@
-import React, { memo } from 'react';
-import { 
-  TouchableOpacity, 
-  Text, 
-  StyleSheet, 
-  ActivityIndicator, 
-  StyleProp, 
-  ViewStyle, 
-  TextStyle 
-} from 'react-native';
+import React, { memo } from "react";
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from "react-native";
+import { darkTheme } from "@/constants/theme";
 
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  type?: 'primary' | 'secondary' | 'danger';
+  type?: "primary" | "secondary" | "danger";
   disabled?: boolean;
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -22,7 +23,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   title,
   onPress,
-  type = 'primary',
+  type = "primary",
   disabled = false,
   loading = false,
   style,
@@ -30,16 +31,16 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonStyle = [
     styles.button,
-    type === 'secondary' && styles.secondaryButton,
-    type === 'danger' && styles.dangerButton,
+    type === "secondary" && styles.secondaryButton,
+    type === "danger" && styles.dangerButton,
     disabled && styles.disabledButton,
     style,
   ];
 
-  const textStyles = [
-    styles.text,
-    type === 'secondary' && styles.secondaryText,
-    disabled && styles.disabledText,
+  const titleStyle = [
+    styles.title,
+    type === "secondary" && styles.secondaryTitle,
+    disabled && styles.disabledTitle,
     textStyle,
   ];
 
@@ -51,9 +52,15 @@ const Button: React.FC<ButtonProps> = ({
       activeOpacity={0.7}
     >
       {loading ? (
-        <ActivityIndicator color="#ffffff" />
+        <ActivityIndicator
+          color={
+            type === "secondary"
+              ? darkTheme.colors.primary
+              : darkTheme.colors.text
+          }
+        />
       ) : (
-        <Text style={textStyles}>{title}</Text>
+        <Text style={titleStyle}>{title}</Text>
       )}
     </TouchableOpacity>
   );
@@ -61,34 +68,42 @@ const Button: React.FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: 48,
+    borderRadius: darkTheme.borderRadius.md,
+    backgroundColor: darkTheme.colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: darkTheme.spacing.lg,
+    marginVertical: darkTheme.spacing.xs,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   secondaryButton: {
-    backgroundColor: 'transparent',
+    backgroundColor: darkTheme.colors.surface,
     borderWidth: 1,
-    borderColor: '#007AFF',
+    borderColor: darkTheme.colors.border,
   },
   dangerButton: {
-    backgroundColor: '#ff3b30',
+    backgroundColor: darkTheme.colors.error,
   },
   disabledButton: {
-    backgroundColor: '#cccccc',
-    borderColor: '#cccccc',
+    opacity: 0.5,
+    backgroundColor: darkTheme.colors.surface,
   },
-  text: {
-    color: '#ffffff',
-    fontWeight: 'bold',
+  title: {
+    color: darkTheme.colors.text,
     fontSize: 16,
+    fontWeight: "600",
+    letterSpacing: 0.5,
   },
-  secondaryText: {
-    color: '#007AFF',
+  secondaryTitle: {
+    color: darkTheme.colors.textSecondary,
   },
-  disabledText: {
-    color: '#999999',
+  disabledTitle: {
+    color: darkTheme.colors.textSecondary,
   },
 });
 

@@ -5,6 +5,7 @@ import Input from "@/components/Input";
 import { useAuth } from "@/context/AuthContext";
 import { StackScreenProps } from "@react-navigation/stack";
 import { AuthStackParamList } from "@/navigation/AuthNavigator";
+import { darkTheme } from "@/constants/theme";
 
 type LoginScreenProps = StackScreenProps<AuthStackParamList, "Login">;
 
@@ -82,31 +83,32 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: darkTheme.colors.background,
   },
   authContainer: {
-    padding: 20,
+    padding: darkTheme.spacing.md,
     flexGrow: 1,
   },
   authTitle: {
     fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: darkTheme.spacing.md,
     textAlign: "center",
+    color: darkTheme.colors.text,
   },
   formContainer: {
     width: "100%",
   },
   submitButton: {
-    marginBottom: 15,
+    marginBottom: darkTheme.spacing.md,
   },
   formError: {
-    color: "#ff3b30",
+    color: darkTheme.colors.error,
     textAlign: "center",
-    marginBottom: 15,
-    backgroundColor: "rgba(255, 59, 48, 0.1)",
-    padding: 10,
-    borderRadius: 8,
+    marginBottom: darkTheme.spacing.md,
+    backgroundColor: `${darkTheme.colors.error}20`,
+    padding: darkTheme.spacing.sm,
+    borderRadius: darkTheme.borderRadius.md,
   },
 });
 
