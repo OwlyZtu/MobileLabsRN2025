@@ -1,15 +1,41 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Text } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+import TasksScreen from "@/screens/TasksScreen";
+import { GameProvider } from "@/context/GameContext";
 
-const App: React.FC = () => {
-  return (
-    <SafeAreaProvider>
-        <StatusBar style="auto" />
-        <Text>init app</Text>
-    </SafeAreaProvider>
-  );
+type RootTabParamList = {
+  Counter: undefined;
+  Tasks: undefined;
 };
 
-export default App;
+const Tab = createBottomTabNavigator<RootTabParamList>();
+
+export default function App() {
+  return (
+    <GameProvider>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName: keyof typeof Ionicons.glyphMap = focused
+              ? route.name === "Counter"
+                ? "game-controller"
+                : "list"
+              : route.name === "Counter"
+              ? "game-controller-outline"
+              : "list-outline";
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
+        <Tab.Screen
+          name="Tasks"
+          component={TasksScreen}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    </GameProvider>
+  );
+}
