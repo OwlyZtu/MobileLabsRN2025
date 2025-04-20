@@ -1,13 +1,12 @@
 import React, { useCallback } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { MOCK_NEWS } from "../data/mockData";
-import { NewsItem } from "../types";
+import { MOCK_NEWS } from "@/data/mockData";
+import { NewsItem } from "@/types";
 import NewsCard from "@/components/news/NewsCard";
 
 const NewsScreen: React.FC = () => {
   const handleNewsPress = useCallback((item: NewsItem) => {
-    // In a real app, this would navigate to a news detail screen
     console.log("News item pressed:", item.id);
   }, []);
 

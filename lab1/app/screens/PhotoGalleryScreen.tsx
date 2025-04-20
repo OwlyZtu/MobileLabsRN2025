@@ -1,13 +1,12 @@
 import React, { useCallback } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { MOCK_PHOTOS } from "../data/mockData";
-import { PhotoItem } from "../types";
+import { MOCK_PHOTOS } from "@/data/mockData";
+import { PhotoItem } from "@/types";
 import PhotoCard from "@/components/photoGallery/PhotoCard";
 
 const PhotoGalleryScreen: React.FC = () => {
   const handlePhotoPress = useCallback((item: PhotoItem) => {
-    // In a real app, this would navigate to a photo detail screen
     console.log("Photo item pressed:", item.id);
   }, []);
 
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   listContent: {
-    padding: 5, // Smaller padding to account for item margins
+    padding: 5,
   },
 });
 
