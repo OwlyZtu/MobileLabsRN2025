@@ -8,18 +8,18 @@ import {
 } from "react-native";
 import { useGameContext, Task } from "@/context/GameContext";
 
+const getProgressColor = (percent: number) => {
+  if (percent < 33) return "#FF4444";
+  if (percent < 66) return "#FFBB33";
+  return "#00C851";
+};
+
 export default function TasksScreen() {
   const { tasks, points } = useGameContext();
 
   const renderTaskItem = ({ item }: ListRenderItemInfo<Task>) => {
     const progressPercent = Math.min(100, (item.progress / item.target) * 100);
-    
-    const getProgressColor = (percent: number) => {
-      if (percent < 33) return '#FF4444';
-      if (percent < 66) return '#FFBB33';
-      return '#00C851';
-    };
-  
+
     return (
       <View style={styles.taskItem}>
         <View style={styles.taskHeader}>
@@ -42,16 +42,17 @@ export default function TasksScreen() {
           <View
             style={[
               styles.progressBar,
-              { 
+              {
                 width: `${progressPercent}%`,
-                backgroundColor: getProgressColor(progressPercent)
-              }
+                backgroundColor: getProgressColor(progressPercent),
+              },
             ]}
           />
         </View>
 
         <Text style={styles.progressText}>
-          {item.progress} / {item.target} {item.type === "points" ? "points" : "times"}
+          {item.progress} / {item.target}{" "}
+          {item.type === "points" ? "points" : "times"}
         </Text>
       </View>
     );
@@ -74,7 +75,12 @@ export default function TasksScreen() {
           <View
             style={[
               styles.progressBar,
-              { width: `${(completedTasks / tasks.length) * 100}%` },
+              {
+                width: `${(completedTasks / tasks.length) * 100}%`,
+                backgroundColor: getProgressColor(
+                  (completedTasks / tasks.length) * 100
+                ),
+              },
             ]}
           />
         </View>

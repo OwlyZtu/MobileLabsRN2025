@@ -128,6 +128,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   ]);
 
   const updateTaskProgress = (taskType: TaskType, amount: number = 1): void => {
+    const completedTasks = tasks.filter((task) => task.completed).length;
     setTasks((prevTasks) =>
       prevTasks.map((task) => {
         if (task.type === taskType && !task.completed) {
@@ -136,9 +137,8 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
               ? Math.min(points, task.target)
               : Math.min(task.progress + amount, task.target);
           const completed = newProgress >= task.target;
-
           if (completed && !task.completed) {
-            setCurrentImage(task.id);
+            setCurrentImage(completedTasks + 1);
           }
 
           return {
