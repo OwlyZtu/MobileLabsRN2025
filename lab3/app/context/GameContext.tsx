@@ -51,7 +51,7 @@ interface GameProviderProps {
 
 export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   const [points, setPoints] = useState<number>(0);
-  const [currentImage, setCurrentImage] = useState<number>(1);
+  const [currentImage, setCurrentImage] = useState<number>(0);
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
