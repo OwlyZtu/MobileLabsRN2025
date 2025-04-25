@@ -8,34 +8,50 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
     "plugins": [
-      "expo-router",
       [
-        "expo-splash-screen",
+        "onesignal-expo-plugin",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "mode": "development"
         }
       ]
     ],
-    "experiments": {
-      "typedRoutes": true
+    "ios": {
+      "bundleIdentifier": "com.kipz.todoreminder",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.lab4.todoreminder",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "extra": {
+      "oneSignalAppId": "6f324329-5ece-43d8-87cd-5c1ab4044622",
+      "oneSignalAPIKey": "os_v2_app_n4zegkk6zzb5rb6nlqnlibcgekwsztlo23wu4pepybqqokuotmiajrv6rsqamewfbkak2pyfeksjettycrovzjh7j4u5uack7w6m3zy",
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "OneSignalNotificationServiceExtension",
+                  "bundleIdentifier": "com.kipz.todoreminder.OneSignalNotificationServiceExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.kipz.todoreminder.onesignal"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "a7b02de4-598d-4d5e-87bf-983e0bb4897a"
+      }
     }
   }
 }

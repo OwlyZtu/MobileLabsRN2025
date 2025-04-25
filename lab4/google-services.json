@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "373105265235",
+    "project_id": "lab4-1afa5",
+    "storage_bucket": "lab4-1afa5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373105265235:android:4dbd3b2dca5614a6fc14a6",
+        "android_client_info": {
+          "package_name": "com.lab4.todoreminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7E6LLHVxHeC42wz8fObPabPnQhHn6NYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
